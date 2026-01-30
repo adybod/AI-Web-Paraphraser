@@ -14,10 +14,19 @@
   <section id="start-screen" class="screen screen--active">
     <main class="container">
       <h1 class="title">Paraphrase any website.<br>Free. Forever.</h1>
+      <div class="model-select-wrapper">
+        <span class="model-select-label">Language model:</span>
+        <select id="model-select" class="model-select" aria-label="Select AI model mode">
+          <option value="normal">PineConeV1.0 – Normal</option>
+          <option value="academic">PineConeV1.0 – Academic</option>
+          <option value="memorization">PineConeV1.0 – Memorization</option>
+        </select>
+      </div>
       <div class="input-wrapper">
         <input
           type="text"
           class="text-input"
+          id="text-input"
           placeholder="copy text here"
           aria-label="Paste or type text to paraphrase"
         />
