@@ -2,7 +2,9 @@
 
 ## Live site
 
-once this repo has GitHub Pages enabled, the site is available at:
+This site is now available at:
 **https://adybod.github.io/AI-Web-Paraphraser/**
+
+watch this project as it continue development
 
 
