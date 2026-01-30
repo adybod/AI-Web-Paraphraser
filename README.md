@@ -5,6 +5,6 @@
 This site is now available at:
 **https://adybod.github.io/AI-Web-Paraphraser/**
 
-watch this project as it continue development
+Watch this project as it continues to be in development
 
 
