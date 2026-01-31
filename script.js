@@ -36,12 +36,21 @@
 
   // —— Synonym map for paraphrasing (common words and phrases) ——
   var SYNONYMS = {
+
+    /* -------- Quantifiers / Basics -------- */
+  
     " a lot of ": " many ",
     " a great deal of ": " a large amount of ",
     " a number of ": " several ",
     " lots of ": " numerous ",
     " plenty of ": " ample ",
-    " kids ": " children ",
+    " many ": " numerous ",
+    " some ": " certain ",
+    " much ": " considerable ",
+    " little ": " minimal ",
+  
+    /* -------- Common Verbs -------- */
+  
     " get ": " obtain ",
     " got ": " obtained ",
     " getting ": " obtaining ",
@@ -67,8 +76,19 @@
     " needed ": " required ",
     " try ": " attempt ",
     " tried ": " attempted ",
+  
+    /* -------- Modifiers -------- */
+  
     " really ": " genuinely ",
     " very ": " highly ",
+    " quickly ": " rapidly ",
+    " slowly ": " gradually ",
+    " often ": " frequently ",
+    " sometimes ": " occasionally ",
+    " always ": " consistently ",
+  
+    /* -------- Adjectives -------- */
+  
     " big ": " large ",
     " small ": " modest ",
     " good ": " beneficial ",
@@ -79,29 +99,33 @@
     " new ": " novel ",
     " old ": " previous ",
     " great ": " substantial ",
-    " little ": " minimal ",
-    " much ": " considerable ",
-    " some ": " certain ",
-    " many ": " numerous ",
-    " often ": " frequently ",
-    " sometimes ": " occasionally ",
-    " always ": " consistently ",
-    " never ": " not ever ",
-    " quickly ": " rapidly ",
-    " slowly ": " gradually ",
     " easy ": " straightforward ",
     " hard ": " challenging ",
     " difficult ": " demanding ",
     " simple ": " uncomplicated ",
     " complex ": " intricate ",
+  
+    /* -------- Nouns -------- */
+  
+    " kids ": " children ",
+    " people ": " individuals ",
+    " someone ": " an individual ",
     " problem ": " issue ",
     " thing ": " aspect ",
     " stuff ": " matter ",
     " way ": " manner ",
+    " nothing ": " no aspect ",
+    " everything ": " all ",
+  
+    /* -------- Softening / Hedging -------- */
+  
     " kind of ": " somewhat ",
     " sort of ": " rather ",
     " a bit ": " slightly ",
     " a little ": " somewhat ",
+  
+    /* -------- Phrase Compression -------- */
+  
     " in order to ": " to ",
     " due to the fact that ": " because ",
     " at this point in time ": " now ",
@@ -110,6 +134,13 @@
     " when it comes to ": " regarding ",
     " in terms of ": " concerning ",
     " as a matter of fact ": " in fact ",
+    " the fact that ": " that ",
+    " whether or not ": " whether ",
+    " each and every ": " each ",
+    " for the purpose of ": " for ",
+  
+    /* -------- Verb Phrases -------- */
+  
     " find out ": " discover ",
     " look at ": " examine ",
     " come up with ": " devise ",
@@ -125,26 +156,19 @@
     " figure out ": " determine ",
     " end up ": " conclude ",
     " turn out ": " result ",
-    " it is ": " this is ",
-    " it was ": " that was ",
-    " there is ": " there exists ",
-    " there are ": " there exist ",
-    " we can ": " one can ",
-    " you can ": " one can ",
-    " people ": " individuals ",
-    " someone ": " an individual ",
-    " something ": " something ",
-    " everything ": " all ",
-    " nothing ": " no aspect ",
+  
+    /* -------- Logical / Discourse -------- */
+  
     " however ": " nevertheless ",
     " therefore ": " thus ",
     " moreover ": " furthermore ",
     " also ": " additionally ",
-    " but ": " however ",
-    " so ": " consequently ",
     " because ": " since ",
     " although ": " though ",
     " while ": " whereas ",
+  
+    /* -------- Ordering / Time-neutral -------- */
+  
     " first ": " initially ",
     " second ": " subsequently ",
     " last ": " finally ",
@@ -152,8 +176,83 @@
     " now ": " at present ",
     " today ": " in the present day ",
     " here ": " in this context ",
-    " there ": " in that context "
+    " there ": " in that context ",
+  
+    /* -------- Opinion / Framing -------- */
+  
+    " in my opinion ": " I think ",
+    " it seems that ": " apparently ",
+    " it is clear that ": " clearly ",
+    " it is important to note that ": " notably ",
+    " it should be noted that ": " note that ",
+    " it is possible that ": " possibly ",
+    " it is likely that ": " likely ",
+    " it is unlikely that ": " unlikely ",
+    " in summary ": " to summarize ",
+  
+    /* -------- Ability / Action -------- */
+  
+    " has the ability to ": " can ",
+    " have the ability to ": " can ",
+    " make a decision ": " decide ",
+    " make a choice ": " choose ",
+    " make an effort ": " try ",
+    " take action ": " act ",
+    " give permission ": " allow ",
+  
+    /* -------- Impact -------- */
+  
+    " have an impact ": " affect ",
+    " have an effect ": " affect ",
+    " play a role ": " matter ",
+  
+    /* -------- Conflict / Security -------- */
+  
+    " armed forces were deployed to the region ": " forces were deployed ",
+    " military action was taken against ": " action was taken against ",
+    " the conflict escalated after ": " the conflict escalated ",
+    " tensions increased between the groups ": " tensions increased ",
+    " fighting broke out in the area ": " fighting began ",
+    " civilians were caught in the conflict ": " civilians were affected ",
+    " the ceasefire agreement was violated ": " the ceasefire was violated ",
+    " negotiations failed to reach an agreement ": " negotiations failed ",
+    " control of the area was contested ": " control was contested ",
+    " the situation deteriorated rapidly ": " the situation worsened ",
+    " armed groups were involved in clashes ": " armed groups clashed ",
+    " the operation resulted in casualties ": " the operation caused casualties ",
+  
+    /* -------- Politics / Governance -------- */
+  
+    " government officials announced plans to ": " officials announced plans to ",
+    " lawmakers debated the issue extensively ": " lawmakers debated the issue ",
+    " the decision was met with criticism ": " the decision faced criticism ",
+    " public response was divided over ": " public response was divided ",
+    " the initiative received bipartisan support ": " the initiative received support ",
+    " leadership changes resulted in ": " leadership changes resulted in ",
+  
+    /* -------- Science / Research -------- */
+  
+    " researchers conducted a study to ": " researchers studied ",
+    " data indicates a correlation between ": " data shows a correlation between ",
+    " the experiment demonstrated a link ": " the experiment showed a link ",
+    " further research is required to ": " further research is needed to ",
+    " conclusions were drawn based on evidence ": " conclusions were evidence-based ",
+  
+    /* -------- Environment -------- */
+  
+    " rising temperatures have led to ": " rising temperatures caused ",
+    " ecosystems are under increasing pressure ": " ecosystems face pressure ",
+    " deforestation has resulted in habitat loss ": " deforestation caused habitat loss ",
+    " wildlife populations declined as a result of ": " wildlife populations declined due to ",
+  
+    /* -------- Analysis / Reporting -------- */
+  
+    " this suggests a broader trend toward ": " this suggests a trend toward ",
+    " the outcome depends largely on ": " the outcome depends on ",
+    " the findings underscore the importance of ": " the findings underscore the importance of ",
+    " limitations of the study include ": " limitations include "
   };
+  
 
   // Academic-style additions (more formal)
   var ACADEMIC_EXTRA = {
@@ -222,14 +321,78 @@
   }
 
   // Words/phrases that suggest a sentence states an important fact
-  var IMPORTANCE_KEYWORDS = [
-    "important", "key", "main", "critical", "essential", "must", "should", "reason",
-    "because", "therefore", "result", "effect", "cause", "conclusion", "summary",
-    "first", "second", "finally", "primarily", "mainly", "especially", "specifically",
-    "however", "although", "despite", "while", "when", "if", "means", "defined as",
-    "is that", "are that", "shows", "indicates", "suggests", "demonstrates", "proves",
-    "study", "research", "evidence", "data", "percent", "%", "number", "major", "significant"
-  ];
+var IMPORTANCE_KEYWORDS = [
+
+  // Core importance
+  "important","importance","importantly",
+  "key","key point","key factor","main","mainly","primary","primarily",
+  "critical","crucial","essential","vital","fundamental","central","core",
+  "major","significant","significance","notable","substantial","meaningful",
+
+  // Obligation / necessity
+  "must","must be","should","required","requirement",
+  "necessary","necessity","need to","needs to","cannot be ignored",
+
+  // Cause & effect
+  "because","because of","therefore","thus","hence",
+  "as a result","result","results in","resulting",
+  "cause","causes","caused by","effect","effects",
+  "leads to","led to","produces","produced",
+  "contributes to","drives","impacts","impact",
+
+  // Conclusions / summaries
+  "conclusion","conclude","in conclusion",
+  "summary","summarize","in summary",
+  "overall","ultimately","finally","in the end",
+  "this means","this shows",
+
+  // Structure / emphasis
+  "first","second","third","finally",
+  "initially","subsequently",
+  "primarily","especially","particularly","specifically","notably",
+  "most importantly","above all",
+
+  // Contrast / exception
+  "however","although","though","despite","in spite of",
+  "while","whereas","nevertheless","nonetheless","yet","on the other hand",
+
+  // Definition / explanation
+  "means","defined as","is defined as","refers to",
+  "is known as","can be described as",
+  "is that","are that","this is","this refers to",
+
+  // Evidence / authority
+  "study","studies","research","researchers",
+  "evidence","data","statistics","statistical","analysis",
+  "findings","results show","shows","indicates","suggests",
+  "demonstrates","reveals","confirms","supports",
+  "according to","based on",
+
+  // Measurement / change
+  "percent","percentage","%","number","numbers",
+  "amount","rate","level",
+  "increase","increased","decrease","decreased",
+  "change","changed","difference","differences",
+
+  // Evaluation / judgment
+  "issue","major issue","key issue","central issue","critical issue",
+  "important factor","primary factor","driving factor",
+
+  // Symbolic / interpretive
+  "symbolic","symbolically","symbolizing","symbolism",
+  "represents","representation","reflects","illustrates",
+
+  // Emphatic academic phrases
+  "it is important to note","it should be noted","it is worth noting",
+  "this highlights","this underscores","this emphasizes",
+  "this suggests","this indicates","this demonstrates",
+
+  // Formal / academic signals
+  "statistically significant","not insignificant",
+  "empirical","the evidence suggests","the data indicates",
+  "the findings show","the results indicate"
+];
+
 
   function countWords(str) {
     return (str.match(/\S+/g) || []).length;
