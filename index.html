@@ -16,10 +16,10 @@
       <h1 class="title">Paraphrase any website.<br>Free. Forever.</h1>
       <div class="model-select-wrapper">
         <span class="model-select-label">Language model:</span>
-        <select id="model-select" class="model-select" aria-label="Select AI model mode">
-          <option value="normal">PineConeV1.0 – Normal</option>
-          <option value="academic">PineConeV1.0 – Academic</option>
-          <option value="memorization">PineConeV1.0 – Memorization</option>
+        <select id="model-select" class="model-select" aria-label="Select language model:">
+          <option value="normal">Normal paraphrase</option>
+          <option value="academic">Academic style</option>
+          <option value="memorization">Key points + summary</option>
         </select>
       </div>
       <div class="input-wrapper">
@@ -40,6 +40,19 @@
     <footer class="version">(alpha) V0.0.01</footer>
   </section>
 
+  <!-- Loading screen (thinking animation while AI runs) -->
+  <section id="loading-screen" class="screen loading-screen">
+    <div class="loading-screen-inner">
+      <div class="thinking-dots" aria-hidden="true">
+        <span class="thinking-dot"></span>
+        <span class="thinking-dot"></span>
+        <span class="thinking-dot"></span>
+      </div>
+      <p id="loading-status" class="loading-status">Preparing…</p>
+      <p class="loading-hint">Rewriting runs in your browser—no external services.</p>
+    </div>
+  </section>
+
   <!-- Result screen (after arrow is pressed) -->
   <section id="result-screen" class="screen">
     <aside class="notes-panel">
@@ -47,6 +60,15 @@
       <div class="notes-content">
         <!-- Notes area - for future use -->
       </div>
+      <!-- FEEDBACK BLOCK START - remove entire block for release -->
+      <div id="notes-feedback" class="notes-feedback">
+        <span class="notes-feedback-label">Notes helpful?</span>
+        <div class="notes-feedback-btns">
+          <button type="button" id="feedback-good" class="notes-feedback-btn">Good</button>
+          <button type="button" id="feedback-bad" class="notes-feedback-btn notes-feedback-btn--bad">Not informative</button>
+        </div>
+      </div>
+      <!-- FEEDBACK BLOCK END -->
     </aside>
     <div class="ai-output-area">
       <div class="ai-output-content">
