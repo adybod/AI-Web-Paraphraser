@@ -126,7 +126,7 @@
     }
 
     if (trimmed.length > 500) {
-      alert("Character limit is 500 characters. To keep going, you'll need to pay or something like that.");
+      alert("Character limit is 500 characters. To keep going, you'll need to pay or something like that."); //change this section to change charachter length and error message. (in the future the usage limit will be removed)
       return;
     }
 
